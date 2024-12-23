@@ -1,0 +1,25 @@
+Run_experiment : True
+experiment_name : 'WD_1'
+
+LR_1:
+    optimizer:
+        params:
+            lr : 0.0002
+            momentum : 0.9
+
+        name : 'SGD'
+
+    model:
+        type: 'vit_b_32_1k_LR_0_0002'
+
+WD_1:
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.01
+        head : 0.1
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    model:
+        type: 'vit_b_8_WD_b0_01_h0_1'

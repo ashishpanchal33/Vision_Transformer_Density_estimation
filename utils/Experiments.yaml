@@ -1,0 +1,512 @@
+Run_experiment : True
+
+experiment_name : 'Cos_S_3'
+
+LR_1:
+    optimizer:
+        params:
+            lr : 0.0002
+            momentum : 0.9
+
+        name : 'SGD'
+
+    model:
+        type: 'vit_b_32_1k_LR_0_0002'
+
+LR_2:
+    optimizer:
+        params:
+            lr : 0.00008
+            momentum : 0.9
+
+        name : 'SGD'
+
+    model:
+        type: 'vit_b_32_1k_LR_2_00008'  
+LR_3:
+    optimizer:
+        params:
+            lr : 0.00015
+            momentum : 0.9
+
+        name : 'SGD'
+
+    hparams:
+        batch_size : 8
+        NUM_EPOCHS : 15
+        dropout : 0.0
+
+    model:
+        type: 'vit_b_32_1k_LR_0_00015'
+
+LR_4:
+    optimizer:
+        params:
+            lr : 0.00025
+            momentum : 0.9
+
+        name : 'SGD'
+
+    hparams:
+        batch_size : 8
+        NUM_EPOCHS : 15
+        dropout : 0.0
+
+    model:
+        type: 'vit_b_32_1k_LR_0_00025'
+        
+WD_3:
+    hparams:
+        batch_size : 20
+        NUM_EPOCHS : 25
+        dropout : 0.0
+        epoch_start : 0
+        
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.01
+        head : 0.1
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    model:
+        type: 'vit_b_8_WD_b0_01_h0_1'
+        
+        
+WD_4:
+    hparams:
+        batch_size : 20
+        NUM_EPOCHS : 25
+        dropout : 0.0
+        epoch_start : 0
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.03
+        head : 0.2
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    model:
+        type: 'vit_b_8_WD_b0_03_h0_2'
+        
+        
+        
+WD_5:
+    hparams:
+        batch_size : 20
+        NUM_EPOCHS : 25
+        dropout : 0.0
+    MHSA_only : True
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.03
+        head : 0.1
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    model:
+        type: 'vit_b_8_WD_b0_03_h0_1_att_only'
+        
+        
+        
+        
+WD_6:
+    hparams:
+        batch_size : 32
+        NUM_EPOCHS : 25
+        dropout : 0.0
+        epoch_start : 0
+    MHSA_only : True
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.1
+        head : 0.2
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    optimizer:
+        params:
+            lr : 0.001
+            momentum : 0.0
+
+        name : 'SGD'        
+        
+    model:
+        type: 'vit_b_8_WD_b0_1_h0_2_att_only_M0_LR_0_001_BS_32'
+        
+        
+        
+WD_6_b:
+    hparams:
+        batch_size : 32
+        NUM_EPOCHS : 10
+        dropout : 0.0
+        epoch_start : 35
+    MHSA_only : True
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.01
+        head : 0.1
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    optimizer:
+        params:
+            lr : 0.0002
+            momentum : 0.0
+
+        name : 'SGD'        
+        
+    model:
+        type: 'vit_b_8_WD_6_extended_WD_0_01_0_1_LR_0_0002'
+    first_run : False
+
+WD_6_c:
+    hparams:
+        batch_size : 32
+        NUM_EPOCHS : 20
+        dropout : 0.0
+        epoch_start : 45
+    MHSA_only : True
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.01
+        head : 0.1
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    optimizer:
+        params:
+            lr : 0.0002
+            momentum : 0.0
+
+        name : 'SGD'        
+        
+    model:
+        type: 'vit_b_8_WD_6_b_extended_WD_0_01_0_1_LR_0_0002'
+    first_run : False
+    
+    
+        
+WD_6_d:
+    hparams:
+        batch_size : 32
+        NUM_EPOCHS : 20
+        dropout : 0.0
+        epoch_start : 45
+    MHSA_only : True
+    Weight_decay_only : True
+    Weight_decay:
+        base : 0.01
+        head : 0.1
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    optimizer:
+        params:
+            lr : 0.0002
+            momentum : 0.0
+
+        name : 'SGD'        
+        
+    model:
+        type: 'vit_b_8_WD_6_c_extended_WD_0_01_0_1_LR_0_0002'
+    first_run : False
+
+
+
+
+        
+Cos_S_1_trial:
+    Load_data_config:
+        USE_SUBSET : True
+        EXCLUDE : False
+        # The number of images to take from each class for the dataset
+        SUBSET_SIZE : 300
+        # Expected directory path to image datasets
+        DATA_DIR : "../multus_data" #"Data/multus-precipitation-data-shared"
+
+        transforms_Resize: 256
+        transforms_CenterCrop: 224
+
+        # Rationale for Normalization https://stackoverflow.com/a/58151903
+        transforms_Normalize: 
+            0: [0.485, 0.456, 0.406]
+            1: [0.229, 0.224, 0.225]
+
+        sub_folders : ["Apr2023Precipitation", "Precip_Primary_Bovine_Satellite"]
+
+        parent_dir_to_exclude : "Apr2023Precipitation"
+        class_to_exclude : "0.0"
+
+
+    hparams:
+        batch_size : 4
+        NUM_EPOCHS : 5
+        dropout : 0.0
+        epoch_start : 0
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    
+    optimizer:
+        params:
+            lr : 0.002
+            momentum : 0.0
+        name : 'SGD'   
+        
+    scheduler:
+        params:
+            #step_size: 10
+            #gamma: 0.1
+            T_0: 1
+            T_mult: 2
+            eta_min: 0.000001
+            last_epoch: -1
+            multiplier: 0.75
+            warmup_end_factor: 1.0
+            warmup_total_iters: 500
+
+
+        name: 'lr_scheduler'  
+        function_name : 'CosineAnnealingWarmRestarts'
+
+        
+    model:
+        type: 'vit_b_8_Cos_S_1_BS4_Trial_2'
+    first_run : True
+
+Cos_S_3_trial:
+    Load_data_config:
+        USE_SUBSET : True
+        EXCLUDE : False
+        # The number of images to take from each class for the dataset
+        SUBSET_SIZE : 300
+        # Expected directory path to image datasets
+        DATA_DIR : "../multus_data" #"Data/multus-precipitation-data-shared"
+
+        transforms_Resize: 256
+        transforms_CenterCrop: 224
+
+        # Rationale for Normalization https://stackoverflow.com/a/58151903
+        transforms_Normalize: 
+            0: [0.485, 0.456, 0.406]
+            1: [0.229, 0.224, 0.225]
+
+        sub_folders : ["Apr2023Precipitation", "Precip_Primary_Bovine_Satellite"]
+
+        parent_dir_to_exclude : "Apr2023Precipitation"
+        class_to_exclude : "0.0"
+
+
+    hparams:
+        batch_size : 4
+        NUM_EPOCHS : 5
+        dropout : 0.0
+        epoch_start : 0
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    
+    optimizer:
+        params:
+            lr : 0.002
+            momentum : 0.0
+        name : 'SGD'   
+        
+    scheduler:
+        params:
+            #step_size: 10
+            #gamma: 0.1
+            T_0: 1
+            T_mult: 2
+            eta_min: 0.000001
+            last_epoch: -1
+            multiplier: 0.75
+            warmup_end_factor: 1.0
+            warmup_total_iters: 500
+
+
+        name: 'lr_scheduler'  
+        function_name : 'CosineAnnealingWarmRestarts'
+
+        
+    model:
+        type: 'vit_b_8_Cos_S_1_BS4_Trial_3'
+    first_run : True
+
+
+Cos_S_1:
+    hparams:
+        batch_size : 4
+        NUM_EPOCHS : 30
+        dropout : 0.0
+        epoch_start : 0
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    
+    optimizer:
+        params:
+            lr : 0.002
+            momentum : 0.9
+        name : 'SGD'   
+        
+    scheduler:
+        params:
+            #step_size: 10
+            #gamma: 0.1
+            T_0: 1
+            T_mult: 2
+            eta_min: 0.000001
+            last_epoch: -1
+            multiplier: 0.75
+            warmup_end_factor: 1.0
+            warmup_total_iters: 4000
+
+
+        name: 'lr_scheduler'  
+        function_name : 'CosineAnnealingWarmRestarts'
+
+        
+    model:
+        type: 'vit_b_8_Cos_S_1_BS4'
+    first_run : True
+
+Cos_S_2:
+    hparams:
+        batch_size : 4
+        NUM_EPOCHS : 30
+        dropout : 0.0
+        epoch_start : 0
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    
+    #assuming , high momentum can lead to overfitting
+    # decreasing momentum , learning rate ,
+    # increasing multiplier
+    
+    optimizer:
+        params:
+            lr : 0.0005
+            momentum : 0.1
+        name : 'SGD'   
+        
+    scheduler:
+        params:
+            #step_size: 10
+            #gamma: 0.1
+            T_0: 5
+            T_mult: 1
+            eta_min: 0.000001
+            last_epoch: -1
+            multiplier: 0.75
+            warmup_end_factor: 1.0
+            warmup_total_iters: 8000
+
+
+        name: 'lr_scheduler'  
+        function_name : 'CosineAnnealingWarmRestarts'
+
+        
+    model:
+        type: 'vit_b_8_Cos_S_2_BS4_M0'
+    first_run : True
+
+
+Cos_S_3:
+    hparams:
+        batch_size : 4
+        NUM_EPOCHS : 30
+        dropout : 0.0
+        epoch_start : 0
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    
+    #assuming , high momentum can lead to overfitting
+    # decreasing momentum , learning rate ,
+    # increasing multiplier
+    
+    optimizer:
+        params:
+            lr : 0.0005
+            momentum : 0.1
+        name : 'SGD'   
+        
+    scheduler:
+        params:
+            #step_size: 10
+            #gamma: 0.1
+            T_0: 2
+            T_mult: 1
+            eta_min: 0.000001
+            last_epoch: -1
+            multiplier: 0.9
+            warmup_end_factor: 1.0
+            warmup_total_iters: 2000
+
+
+        name: 'lr_scheduler'  
+        function_name : 'CosineAnnealingWarmRestarts'
+
+        
+    model:
+        type: 'vit_b_8_Cos_S_3_BS4_M01'
+    first_run : True
+
+
+Cos_S_4:
+    hparams:
+        batch_size : 4
+        NUM_EPOCHS : 30
+        dropout : 0.0
+        epoch_start : 0
+    timm:
+        model_name : 'timm/vit_base_patch8_224.augreg2_in21k_ft_in1k' 
+        pretrained : True
+        num_classes : 5
+    
+    #assuming , high momentum can lead to overfitting
+    # decreasing momentum , learning rate ,
+    # increasing multiplier
+    
+    optimizer:
+        params:
+            lr : 0.0005
+            momentum : 0.1
+        name : 'SGD'   
+        
+    scheduler:
+        params:
+            #step_size: 10
+            #gamma: 0.1
+            T_0: 2
+            T_mult: 1
+            eta_min: 0.000001
+            last_epoch: -1
+            multiplier: 0.9
+            warmup_end_factor: 1.0
+            warmup_total_iters: 2000
+
+
+        name: 'lr_scheduler'  
+        function_name : 'CosineAnnealingWarmRestarts'
+
+        
+    model:
+        type: 'vit_b_8_Cos_S_3_BS4_M01'
+    first_run : True

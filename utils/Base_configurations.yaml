@@ -1,0 +1,67 @@
+Load_data_config:
+    USE_SUBSET : True
+    EXCLUDE : False
+    # The number of images to take from each class for the dataset
+    SUBSET_SIZE : 3000
+    # Expected directory path to image datasets
+    DATA_DIR : "../multus_data" #"Data/multus-precipitation-data-shared"
+
+    transforms_Resize: 256
+    transforms_CenterCrop: 224
+
+    # Rationale for Normalization https://stackoverflow.com/a/58151903
+    transforms_Normalize: 
+        0: [0.485, 0.456, 0.406]
+        1: [0.229, 0.224, 0.225]
+
+    sub_folders : ["Apr2023Precipitation", "Precip_Primary_Bovine_Satellite"]
+    
+    parent_dir_to_exclude : "Apr2023Precipitation"
+    class_to_exclude : "0.0"
+    
+hparams:
+    batch_size : 8
+    NUM_EPOCHS : 25
+    dropout : 0.0
+    epoch_start : 0
+
+    
+    
+optimizer:
+    params:
+        lr : 0.0001
+        momentum : 0.9
+
+    name : 'SGD'
+
+scheduler:
+    params:
+        step_size: 10
+        gamma: 0.1
+
+    name: 'lr_scheduler'  
+    function_name : 'StepLR'
+
+timm:
+    model_name : 'vit_base_patch32_224.augreg_in1k' 
+    pretrained : True
+    num_classes : 5
+    
+MHSA_only : False
+
+Weight_decay_only : False
+Weight_decay:
+    base : 0.0
+    head : 0.0
+
+
+Loss:
+    name : 'CrossEntropyLoss'
+    params : {}
+
+model:
+
+    type: 'vit_b_32_1k_default'
+    
+first_run : True
+

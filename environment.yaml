@@ -1,0 +1,10 @@
+name: cs7643-final-proj
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - matplotlib
+  - tensorboard
+  - tqdm
+  - timm
